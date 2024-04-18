@@ -1,0 +1,32 @@
+/* tablee.css */
+
+/* Style untuk tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style untuk header kolom */
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style untuk sel data */
+td {
+    padding: 8px;
+    border-bottom: 1px solid #901e1e;
+}
+
+/* Style untuk baris ganjil */
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Style untuk baris saat hover */
+tr:hover {
+    background-color: #f2f2f2;
+}

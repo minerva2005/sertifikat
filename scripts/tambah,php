@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Program</title>
+</head>
+<body>
+    <h2>Pilih Program</h2>
+    <form action="" method="POST">
+        <label for="program">Pilih Program:</label><br>
+        <select name="program" id="program">
+            <option value="" selected disabled>Choose Program</option>
+            <?php
+            // Koneksi ke database
+            $host = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "nama_database"; // Ganti dengan nama database Anda
+
+            $conn = new mysqli($host, $username, $password, $database);
+
+            // Periksa koneksi
+            if ($conn->connect_error) {
+                die("Koneksi gagal: " . $conn->connect_error);
+            }
+
+            // Query untuk mengambil data program
+            $sql = "SELECT id, nama_program FROM program"; // Ganti dengan nama tabel dan kolom Anda
+
+            // Jalankan query
+            $result = $conn->query($sql);
+
+            // Periksa apakah ada hasil yang dikembalikan
+            if ($result->num_rows > 0) {
+                // Loop melalui setiap baris hasil
+                while ($row = $result->fetch_assoc()) {
+                    // Tampilkan opsi untuk setiap baris
+                    echo "<option value='" . $row['id'] . "'>" . $row['nama_program'] . "</option>";
+                }
+            } else {
+                echo "<option value='' disabled>Data program tidak ditemukan</option>";
+            }
+
+            // Tutup koneksi database
+            $conn->close();
+            ?>
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
